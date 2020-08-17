@@ -1,0 +1,52 @@
+/* style for main page */
+
+body {
+    background-color: pink;
+}
+
+.container {
+    margin: auto 1em;
+}
+
+h1 {
+    text-align: center;
+}
+
+/* SECTIONS general style */
+
+#create-shape {
+    height: auto;
+    width: auto;
+    float: left;
+    margin: 1em;
+    border: 1px solid blue;
+}
+
+#canvas {
+    height: 600px;
+    width: 500px;
+    float: left;
+    margin: 1em;
+    border: 1px solid blue;
+}
+
+#properties {
+    height: auto;
+    width: auto;
+    float: left;
+    margin: 1em;
+    border: 1px solid blue; 
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+/* ADD SHAPE BUTTON style */
+
+.add-shape {
+    margin: 10px;
+}
+
+h3 {
+    text-align: center;
+}
