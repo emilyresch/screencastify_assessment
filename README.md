@@ -19,8 +19,6 @@ For this assessment I used vanilla Javascript as my programming language. I chos
 
 # The Approach
 
-(pictures of notes?)
-
 I first approached this project with pen and paper. I drew out the example application to determine how many sections, buttons, etc would be needed for the bare bones of the app. I decided to place mostly semantic elements on the HTML file to create a base that my JS file could reference. The three main sections are the add-buttons, the shape canvas, and the property-adjusting panels. I then determined the main functions that the application would require: 
 1. Adding a circle or a rectangle when the respective button is clicked; 
 2. Displaying the correct properties panel when a shape is clicked;
