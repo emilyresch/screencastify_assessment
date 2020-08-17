@@ -1,32 +1,25 @@
-//identify buttons in html
+//*Please see bottom for pseudocode of incomplete portions*
+
+
+//add event listeners to add-shape buttons
 let circleBtn = document.getElementById("add-circle");
 let rectBtn = document.getElementById("add-rectangle");
 
-//add event listeners to buttons
 circleBtn.addEventListener("click", addshape);
 rectBtn.addEventListener("click", addshape)
 
-// array of shape objects
+//Arrays (shapes and properties)
 let shapeArr = [];
-//array of properties based on shapes id number
 let propsArr = [];
 
-//FUNCTION TO CREATE A NEW SHAPE
+//function to create a new shape
 function addshape(e) {
     e.preventDefault();
-    // console.log(e.target.value);
-
-
     if (e.target.value === "circle") { //CIRCLE
-        //grab canvas 
         let canvasDiv = document.getElementById("canvas");
-        //make it appear randomly in the canvas div
-        // let posX = (Math.random() * (window.innerWidth)).toFixed();
-        // let posY = (Math.random() * (window.innerHeight)).toFixed();
-
         //create new circle element
         let circle = document.createElement("div");
-        // circle.style.position = "relative";
+        // circle.style.position = "absolute"; needed for drag
         circle.style.height = "50px";
         circle.style.width = "50px";
         circle.style.borderRadius = "50px"
@@ -41,21 +34,16 @@ function addshape(e) {
             borderRadius: "50px",
             color: "black"
         }
-        // console.log(circleObj)
-
-        //push 
         shapeArr.push(circleObj);
-        console.log(shapeArr);
-        //create unique id attr for each new shape and push into the array
+        //create unique id 
         for (let i = 0; i < shapeArr.length; i++) {
             let newId = document.createAttribute("id");
             newId.value = [i];
             circle.setAttributeNode(newId);
-            // console.log(newId)
             circleObj.id = newId.value;
         }
 
-        //create class attr for new shape
+        //create class
         let newClass = document.createAttribute("class");
         newClass.value = "shape";
         circle.setAttributeNode(newClass);
@@ -70,13 +58,12 @@ function addshape(e) {
 
 
     } else { //RECTANGLE
-        //find canvas
         let canvasDiv = document.getElementById("canvas");
         //create new rectangle element
         let rectangle = document.createElement("div");
         rectangle.style.height = "50px";
         rectangle.style.width = "100px";
-        rectangle.style.backgroundColor = "black";
+        rectangle.style.backgroundColor = "white";
         rectangle.setAttribute("value", "rectangle");
         // template for rect object
         let rectObj = {
@@ -84,23 +71,17 @@ function addshape(e) {
             type: "rectangle",
             height: "50px",
             width: "100px",
-            color: "black",
+            color: "white",
         }
-        // console.log(rectObj)
-
-        //push
         shapeArr.push(rectObj);
-        //create unique id attr for each new shape and push into the array
+        //create unique id 
         for (let i = 0; i < shapeArr.length; i++) {
             let newId = document.createAttribute("id");
             newId.value = [i];
             rectangle.setAttributeNode(newId);
-            // console.log(newId)
             rectObj.id = newId.value;
         }
-
-
-        //create class attr for new shape
+        //create class 
         let newClass = document.createAttribute("class");
         newClass.value = "shape";
         rectangle.setAttributeNode(newClass);
@@ -114,15 +95,13 @@ function addshape(e) {
         rectangle.addEventListener("mouseleave", removeHighlight);
 
     }
+    // clickAndDrag();
 }
 
-//CLICKING ON SHAPES FUNCTIONS
+//functions for clicking on the shapes
 function clickShape(e) {
     console.log(propsArr);
-    // console.log(this.id);
     this.style.border = "5px solid blue";
-
-    //find properties section
     let propSection = document.getElementById("newPropsPanels");
 
     //create panel style
@@ -131,9 +110,8 @@ function clickShape(e) {
     propPanel.style.height = "auto";
     propPanel.style.width = "100%";
     propPanel.style.border = "1px solid green";
-    // propPanel.setAttribute("class", "propertyPanel");
 
-    //create CIRCLE panel and tools
+    //create CIRCLE panel and tools (radius - height/width/borderRadius)
     let radiusRange = document.createElement("input");
     radiusRange.setAttribute("type", "range");
     radiusRange.setAttribute("min", "1");
@@ -141,7 +119,6 @@ function clickShape(e) {
     radiusRange.setAttribute("value", "50");
     radiusRange.style.margin = "10px";
     radiusRange.onclick = function () {
-        console.log(radiusRange.value);
         let shapeId = e.target.id;
         // console.log(panelId);
         let newRadius = parseInt(radiusRange.value);
@@ -155,7 +132,7 @@ function clickShape(e) {
         }
     }
 
-    //create RECTANGLE panel and tools
+    //create RECTANGLE panel and tools (height and width)
     let heightRange = document.createElement("input")
     heightRange.setAttribute("class", "rectHeight");
     heightRange.setAttribute("type", "range");
@@ -163,20 +140,15 @@ function clickShape(e) {
     heightRange.setAttribute("max", "300");
     heightRange.setAttribute("value", "50");
     heightRange.onclick = function () {
-        // console.log(heightRange.defaultValue);
-        // console.log(heightRange.value);
         let shapeId = e.target.id;
         let newHeight = parseInt(heightRange.value);
-        // console.log(typeof (newHeight));
         let rectangle = document.getElementsByClassName("shape");
-        // console.log(rectangle[i]);
         let rectVal = rectangle[shapeId].getAttribute("value");
         // console.log(rectVal);
 
         if (rectVal === "rectangle") {
             rectangle[shapeId].style.height = newHeight + "px";
         }
-
     };
 
 
@@ -209,7 +181,9 @@ function clickShape(e) {
     let wlabel = document.createElement("p");
     wlabel.innerText = "width:";
 
-    //delete button
+    //color picker would be appended here
+
+    //create delete button
     let deleteBtn = document.createElement("button");
     deleteBtn.setAttribute("id", e.target.id);
     deleteBtn.innerText = "delete";
@@ -217,15 +191,12 @@ function clickShape(e) {
     propPanel.appendChild(deleteBtn);
     deleteBtn.addEventListener("click", deleteShape)
 
-    // console.log(e.target.id);
-
-    // if (this.id) {
+    
     let shapeProp = document.getElementById(this.id);
     let shapeValue = shapeProp.getAttribute("value");
     console.log(shapeValue);
 
     if (shapeValue === "circle") {
-
         // Label props panel with shape type
         let shapeLabel = document.createElement("p");
         shapeLabel.innerText = "Circle, id# " + this.id
@@ -235,7 +206,7 @@ function clickShape(e) {
 
         //append 
         if (propsArr.indexOf(shapeProp) === -1) {
-            console.log("shape is new")
+            // console.log("shape is new")
             //on click, push shape's id into the properties array if it's not already there (propsArr):
             // console.log(propsArr)
             propsArr.push(shapeProp);
@@ -246,18 +217,18 @@ function clickShape(e) {
             rlabel.appendChild(radiusRange);
 
         } else {
-            console.log("shape is already in the array")
+            return null;
         }
-    } else if (shapeValue === "rectangle") { //IF RECTANGLE
+    } else if (shapeValue === "rectangle") { 
 
         // Label props panel with shape type
         let shapeLabel = document.createElement("p");
         shapeLabel.innerText = "Rectangle, id# " + this.id
         //append 
         if (propsArr.indexOf(shapeProp) === -1) {
-            console.log("shape is new")
+            // console.log("shape is new")
             propsArr.push(shapeProp);
-
+            //append
             propSection.prepend(propPanel);
             propPanel.appendChild(deleteBtn);
             propPanel.appendChild(shapeLabel);
@@ -266,22 +237,12 @@ function clickShape(e) {
             propPanel.appendChild(wlabel);
             wlabel.appendChild(widthRange);
         } else {
-            console.log("shape is already in the array")
+            return null;
         }
     }
 }
-// }
 
-function findObjectById(array, key, value) {
-    for (var i = 0; i < array.length; i++) {
-        if (array[i][key] === value) {
-            return array[i];
-        }
-    }
-    return null;
-}
-
-//DELETE SHAPE AND PANEL ON CLICK (fix bug)
+//delete shape and panel on button click 
 function deleteShape(e) {
     console.log("delete btn clicked!");
     let panelSection = document.getElementById("newPropsPanels");
@@ -295,25 +256,20 @@ function deleteShape(e) {
     console.log("panel ID is " + panelId);
 
 
-    let shapeId = findObjectById(shapeArr, "id", panelId)
-    console.log(shapeId);
-
     for (let i = 0; i < shapeArr.length; i++) {
-        // if (shapeArr[i].id === panelId){
+        // remove from arrays and DOM if found
         shapeArr.splice([i], 1);
         propsArr.splice([i], 1);
         shapeDiv.remove();
         panelSection.childNodes[i].remove();
         break;
-        // panelSection[i].remove();
-        // } 
     }
-    console.log(propsArr);
-    console.log(shapeArr);
+    // console.log(propsArr);
+    // console.log(shapeArr);
 
 }
 
-//HIGHLIGHT SHAPE ON MOUSEENTER
+//highlight shape on mouseenter
 function highlightShape(e) {
     // console.log("hovering!");
     // console.log(e.target.id);
@@ -323,9 +279,36 @@ function highlightShape(e) {
     }
 }
 
-//REMOVE HIGHLIGHT ON MOUSELEAVE
+//remove highlight on mouseleave
 function removeHighlight(e) {
     if (e.target.id === this.id) {
         this.style.border = "none";
     }
 }
+
+//**DRAG SHAPE
+//shape's position would be "absolute";
+//locate dragging area
+//identify shape being dragged by its ID 
+//add an event listener to the dragging item - mousedown
+         //mousedown function***
+         //canvas holds a mousemove and mouseup function
+         //set points where mouse begins with e.clientX & e.clientY
+            //mousemove function***
+            //calculates where mouse is currently while moving around the window/canvas
+            //the calculation would be: previous X/Y - e.clientX/Y
+            //use .getBondingClientRect() to get top and left pixels. this will physically change where the div moves by updating the style.left/style.top
+            //set the new coords to be the current position coords
+            //mouseup function*** 
+            //remove the event listeners from the canvas
+
+
+//**To make the new shape appear randomly in the canvas div, I would use (Math.Random()) to get coordinates for the shape to appear, something like this: 
+//let posX = (Math.random() * (window.innerWidth)).toFixed();
+//let posY = (Math.random() * (window.innerHeight)).toFixed();
+//I would have used the prevX/Y from the dragging function to display the current coordinates of the shape.
+
+//Color Picker
+//for the colorPicker, I wanted to implement either a plugin such as the one by Spectrum (https://bgrins.github.io/spectrum/) or use jQuery UI plugin
+
+
