@@ -2,10 +2,15 @@
 
 This project is the technical assessment for Screencastify's Front-End Developer role. 
 
+# Demo
+
+![DemoGif](images/demo.gif)
 
 # Purpose
 
 In this app, users can create shapes (either circles or rectangles) and utilize each shape's corresponding properties panel to change the shapes' size and color. The user is also given the shape's XY coordinates on the window and have the ability to click and drag the shape around the canvas.
+
+![buttons](images/buildatoybuttons.png)
 
 # The Code
 

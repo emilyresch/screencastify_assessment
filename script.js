@@ -12,6 +12,7 @@ rectBtn.addEventListener("click", addshape)
 let shapeArr = [];
 let propsArr = [];
 
+
 //function to create a new shape
 function addshape(e) {
     e.preventDefault();
