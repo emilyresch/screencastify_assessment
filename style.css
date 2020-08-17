@@ -2,6 +2,8 @@
 
 body {
     background-color: pink;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
 }
 
 .container {
@@ -19,7 +21,7 @@ h1 {
     width: auto;
     float: left;
     margin: 1em;
-    border: 1px solid blue;
+    border: 2px solid palegoldenrod;
 }
 
 #canvas {
@@ -27,7 +29,7 @@ h1 {
     width: 500px;
     float: left;
     margin: 1em;
-    border: 1px solid blue;
+    border: 2px solid palegoldenrod;
 }
 
 #properties {
@@ -35,7 +37,7 @@ h1 {
     width: auto;
     float: left;
     margin: 1em;
-    border: 1px solid blue; 
+    border: 2px solid palegoldenrod; 
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 20px;

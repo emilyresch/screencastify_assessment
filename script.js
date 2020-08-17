@@ -109,7 +109,8 @@ function clickShape(e) {
     propPanel.setAttribute("id", e.target.id);
     propPanel.style.height = "auto";
     propPanel.style.width = "100%";
-    propPanel.style.border = "1px solid green";
+    propPanel.style.border = "1px solid palevioletred";
+    propPanel.style.paddingBottom = "5px";
 
     //create CIRCLE panel and tools (radius - height/width/borderRadius)
     let radiusRange = document.createElement("input");
@@ -174,7 +175,6 @@ function clickShape(e) {
             rectangle[shapeId].style.width = newWidth + "px";
         }
     };
-
 
     let hlabel = document.createElement("p");
     hlabel.innerText = "height:";
@@ -271,9 +271,6 @@ function deleteShape(e) {
 
 //highlight shape on mouseenter
 function highlightShape(e) {
-    // console.log("hovering!");
-    // console.log(e.target.id);
-    // console.log(this.id);
     if (e.target.id === this.id) {
         this.style.border = "5px solid red";
     }

@@ -2,7 +2,6 @@
 
 This project is the technical assessment for Screencastify's Front-End Developer role. 
 
-# GIF HERE
 
 # Purpose
 
@@ -10,7 +9,7 @@ In this app, users can create shapes (either circles or rectangles) and utilize 
 
 # The Code
 
-For this assessment I used vanilla Javascript as my programming language. I chose to use vanilla Javascript because it is more widely understood and readable and has good performance.
+For this assessment I used vanilla Javascript as my programming language. I chose to use vanilla Javascript because it is widely understood and readable, and has good performance.
 
 
 # The Approach
@@ -28,9 +27,12 @@ I created the shapes dynamically with an onclick function for each "add" button.
 In a similar vein, to adjust the sizes of the shapes, I checked the id's of the shapes and corresponding panels to create an onlick for each input slider. 
 
 
-# Challenges & Final Explanations
+# Final Notes
 
-My main challenges involved referencing the correct shapes to their properties panels. More elements than I initially realized required an id. 
+Please see the code at the bottom of "script.js" for pseudo code on my approach to incomplete portions. Thank you for looking at my work!
+-Emily
+
+
 
 
 
