@@ -307,6 +307,7 @@ function removeHighlight(e) {
 //I would have used the prevX/Y from the dragging function to display the current coordinates of the shape.
 
 //Color Picker
-//for the colorPicker, I wanted to implement either a plugin such as the one by Spectrum (https://bgrins.github.io/spectrum/) or use jQuery UI plugin
+//for the colorPicker, I wanted to implement either a plugin such as the one by Spectrum (https://bgrins.github.io/spectrum/) or use jQuery UI plugin.
+//In a similar vein to sizing the shape, I would have referenced the id of the shape when clicking on color choice and updating the style.background to = "the new color";
 
 
